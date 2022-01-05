@@ -12,13 +12,17 @@ const Header = () => {
     const [toggle,setToggle] = useState(false);
     const [toggleOrders,setToggleOrders] = useState(false);
     const {state: {cart}} = useContext(AppContext);
+    const [toggleMenuMobile,setToggleMenuMobile] = useState(false);
 
     const handleToggle = ()=>{
         setToggle(!toggle);
     }
     return (
         <nav>
-            <img src={menu} alt="menu" className='menu' />
+            <img src={menu} onClick={ () => setToggleMenuMobile( !toggleMenuMobile ) } alt="menu" className='menu' />
+            {
+                toggleMenuMobile && <Menu />
+            }
             <div className='navbar-left'>
                 <img src={logo} alt="logo" className='logo-navbar' />
                 <ul>
